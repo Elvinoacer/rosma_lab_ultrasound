@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import CtaBanner from "./components/CtaBanner";
 import FaqAccordion from "./components/FaqAccordion";
-import Rings from "./components/Rings";
 import SectionHeading from "./components/SectionHeading";
 import { faqs, journey, scans, site } from "./lib/site";
 
@@ -22,34 +21,41 @@ const practical = [
 export default function Home() {
   return (
     <>
-      <section className="relative isolate min-h-[92svh] overflow-hidden bg-[#0c1c22]">
-        <div className="absolute inset-0">
-          <Image src="/hero_design/hero_pc_bg.webp" alt="" fill priority className="hidden object-cover md:block" sizes="100vw" />
-          <Image src="/hero_design/hero_mobile_bg.webp" alt="" fill priority className="object-cover md:hidden" sizes="100vw" />
-        </div>
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0c1c22]/0 via-[#0c1c22]/5 to-[#0c1c22]/35" />
-        <Rings className="-right-28 top-24 hidden h-[30rem] w-[30rem] opacity-35 md:block" />
-        <Rings className="-left-28 bottom-16 h-64 w-64 opacity-25 md:hidden" />
-
-        <div className="relative mx-auto grid min-h-[92svh] max-w-6xl items-end gap-4 px-4 pb-9 pt-28 sm:px-6 sm:pb-12 lg:grid-cols-[0.84fr_1.16fr] lg:items-center lg:pb-16">
-          <div className="relative z-20 max-w-xl pb-2 lg:pb-10">
-            <p className="reveal text-xs font-semibold uppercase tracking-[0.28em] text-sand">Karibu · Kasarani</p>
-            <h1 className="display reveal reveal-d1 mt-4 max-w-2xl text-[3.35rem] leading-[0.93] text-bone sm:text-[4.6rem] lg:text-[5.1rem]">Diagnostics without the maze.</h1>
-            <p className="reveal reveal-d2 mt-6 max-w-lg text-base leading-relaxed text-bone/80 sm:text-lg">Ultrasound and laboratory testing on Kasarani–Mwiki Road. See what you need, prepare correctly, and know what happens next.</p>
-            <div className="reveal reveal-d3 mt-7 flex flex-wrap gap-3">
-              <Link href="/book" className="btn-primary">Book a visit</Link>
-              <Link href="/visit" className="btn-light">Get directions</Link>
-            </div>
-            <dl className="reveal reveal-d4 mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/15 pt-6 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-              {practical.map(([k, v]) => <div key={k}><dt className="text-[10px] uppercase tracking-[0.16em] text-sand">{k}</dt><dd className="mt-1 text-xs leading-relaxed text-bone sm:text-sm">{v}</dd></div>)}
-            </dl>
-          </div>
-
-          <div className="relative z-10 min-h-[20rem] sm:min-h-[28rem] lg:min-h-[38rem]">
-            <Image src="/hero_design/hero_pc.webp" alt="" fill priority className="hidden object-contain object-right-bottom md:block" sizes="(min-width:1024px) 62vw, 100vw" />
-            <Image src="/hero_design/hero_mobile.webp" alt="" fill priority className="object-contain object-right-bottom md:hidden" sizes="100vw" />
-          </div>
+      <section className="relative overflow-hidden bg-[#0c1c22]" aria-labelledby="hero-title">
+        <h1 id="hero-title" className="sr-only">Diagnostics without the maze.</h1>
+        <div className="relative aspect-[864/1821] w-full md:aspect-[1536/1024]">
+          <Image
+            src="/hero_design/hero_mobile_bg.webp"
+            alt=""
+            fill
+            priority
+            className="object-cover md:hidden"
+            sizes="100vw"
+          />
+          <Image
+            src="/hero_design/hero_mobile.webp"
+            alt="Rosma Laboratory hero design"
+            fill
+            priority
+            className="object-cover md:hidden"
+            sizes="100vw"
+          />
+          <Image
+            src="/hero_design/hero_pc_bg.webp"
+            alt=""
+            fill
+            priority
+            className="hidden object-cover md:block"
+            sizes="100vw"
+          />
+          <Image
+            src="/hero_design/hero_pc.webp"
+            alt="Rosma Laboratory hero design"
+            fill
+            priority
+            className="hidden object-cover md:block"
+            sizes="100vw"
+          />
         </div>
       </section>
 
