@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { site } from "@/app/lib/site";
-import HeroNav from "./HeroNav";
 
 const reasons = [
   {
@@ -45,10 +44,8 @@ export default function HomeHero() {
       <div className="hero-scrim pointer-events-none absolute inset-0" />
 
       <div className="relative z-10 flex min-h-[100svh] flex-col p-2.5 sm:p-4 lg:p-5">
-        <div className="hero-frame flex min-h-[calc(100svh-1.25rem)] flex-1 flex-col rounded-[1.35rem] px-4 py-4 sm:min-h-[calc(100svh-2rem)] sm:rounded-[1.65rem] sm:px-6 sm:py-5 lg:min-h-[calc(100svh-2.5rem)] lg:rounded-[1.85rem] lg:px-8 lg:py-6 xl:px-10">
-          <HeroNav />
-
-          <div className="mt-8 grid items-center gap-8 pb-2 sm:mt-10 lg:mt-4 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,22rem)] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(300px,24rem)] xl:gap-14">
+        <div className="hero-frame flex min-h-[calc(100svh-1.25rem)] flex-1 flex-col rounded-[1.35rem] px-4 pb-4 pt-[4.75rem] sm:min-h-[calc(100svh-2rem)] sm:rounded-[1.65rem] sm:px-6 sm:pb-5 sm:pt-20 lg:min-h-[calc(100svh-2.5rem)] lg:rounded-[1.85rem] lg:px-8 lg:pb-6 lg:pt-[5.25rem] xl:px-10">
+          <div className="grid flex-1 items-center gap-8 pb-2 lg:grid-cols-[minmax(0,1fr)_minmax(280px,22rem)] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(300px,24rem)] xl:gap-14">
             <div className="max-w-2xl">
               <p className="reveal text-[11px] font-medium uppercase tracking-[0.28em] text-sand sm:text-xs">
                 Karibu – Kasarani

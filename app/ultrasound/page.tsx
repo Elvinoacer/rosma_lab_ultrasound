@@ -23,7 +23,7 @@ export default function UltrasoundPage() {
         imageAlt="A clinician reviewing diagnostic images"
       />
 
-      <section className="px-4 py-20 sm:px-6 sm:py-24">
+      <section className="px-2.5 py-16 sm:px-4 sm:py-24 lg:px-5">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             kicker="The menu"
@@ -35,7 +35,7 @@ export default function UltrasoundPage() {
               <article
                 key={scan.slug}
                 id={scan.slug}
-                className="grid overflow-hidden rounded-[1.8rem] border border-ink/8 bg-white lg:grid-cols-[0.85fr_1.15fr]"
+                className="hero-frame grid overflow-hidden rounded-[1.8rem] lg:grid-cols-[0.85fr_1.15fr]"
               >
                 <div className="relative min-h-[16rem]">
                   <Image
@@ -46,14 +46,14 @@ export default function UltrasoundPage() {
                     sizes="(min-width:1024px) 38vw, 100vw"
                   />
                 </div>
-                <div className="flex flex-col justify-center p-8 sm:p-10">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-clay">
+                <div className="hero-glass flex flex-col justify-center rounded-none p-8 sm:p-10">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-sand">
                     {String(i + 1).padStart(2, "0")} · {scan.kicker}
                   </p>
-                  <h2 className="display mt-2 text-3xl text-ink">{scan.title}</h2>
-                  <p className="mt-3 text-ink-soft">{scan.summary}</p>
-                  <p className="mt-5 text-sm leading-relaxed text-sea">
-                    <span className="font-semibold">Prepare: </span>
+                  <h2 className="display mt-2 text-3xl text-bone">{scan.title}</h2>
+                  <p className="mt-3 text-bone/75">{scan.summary}</p>
+                  <p className="mt-5 text-sm leading-relaxed text-sand">
+                    <span className="font-semibold text-bone">Prepare: </span>
                     {scan.prep}
                   </p>
                 </div>
@@ -63,7 +63,7 @@ export default function UltrasoundPage() {
         </div>
       </section>
 
-      <section className="px-4 pb-16 sm:px-6">
+      <section className="px-2.5 pb-16 sm:px-4 lg:px-5">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
           {[
             {
@@ -79,14 +79,14 @@ export default function UltrasoundPage() {
               body: "Often ready before you leave. Complex studies may need a short review. Print, or collect later the same day.",
             },
           ].map((card) => (
-            <div key={card.title} className="rounded-[1.4rem] bg-foam p-7">
-              <h3 className="display text-2xl text-ink">{card.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">{card.body}</p>
+            <div key={card.title} className="hero-glass rounded-[1.45rem] p-7">
+              <h3 className="display text-2xl text-bone">{card.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-bone/70">{card.body}</p>
             </div>
           ))}
         </div>
         <div className="mx-auto mt-10 max-w-6xl">
-          <Link href="/prepare" className="text-sm font-medium text-sea hover:underline">
+          <Link href="/prepare" className="text-sm font-medium text-sand hover:text-white">
             Full preparation guide →
           </Link>
         </div>

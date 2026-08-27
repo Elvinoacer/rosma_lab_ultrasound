@@ -9,9 +9,9 @@ import WaveMark from "./WaveMark";
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuFor, setMenuFor] = useState<string | null>(null);
-  const open = menuFor === pathname;
-  const darkHero = pathname === "/";
+  const [open, setOpen] = useState(false);
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const solid = scrolled || open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -20,37 +20,91 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname === "/") return null;
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
-  const solid = scrolled || open || !darkHero;
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  useEffect(() => {
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto max-w-6xl px-4 pt-3 sm:px-6">
-        <div className={`flex items-center justify-between rounded-2xl px-3 py-2.5 transition-all duration-300 sm:px-4 ${solid ? "border border-white/60 bg-[rgba(251,248,242,0.88)] shadow-[0_14px_40px_rgba(16,24,32,0.08)] backdrop-blur-xl" : "bg-transparent"}`}>
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className={`relative flex h-10 w-10 items-center justify-center rounded-full ${solid ? "bg-sea-deep" : "bg-white/10"}`}><WaveMark className="h-6 w-6" /></span>
+      <div className="p-2.5 sm:p-4 lg:p-5">
+        <div
+          className={`flex items-center justify-between rounded-[1.35rem] px-4 py-3 transition-all duration-300 sm:px-5 ${
+            solid ? "hero-glass" : "border border-transparent"
+          }`}
+        >
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3">
+            <WaveMark className="h-10 w-10 sm:h-11 sm:w-11" />
             <span className="flex flex-col leading-none">
-              <span className={`display text-[1.15rem] tracking-tight ${solid ? "text-ink" : "text-bone"}`}>{site.shortName}</span>
-              <span className={`mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] ${solid ? "text-sea" : "text-sand"}`}>Laboratory</span>
+              <span className="display text-[1.2rem] tracking-tight text-bone sm:text-[1.35rem]">
+                {site.shortName}
+              </span>
+              <span className="mt-1 text-[9px] font-medium uppercase tracking-[0.22em] text-sand sm:text-[10px]">
+                Laboratory
+              </span>
             </span>
           </Link>
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
-            {nav.map((item) => <Link key={item.href} href={item.href} className={`rounded-full px-3 py-2 text-sm transition ${isActive(item.href) ? solid ? "bg-sea/10 text-sea-deep" : "bg-white/10 text-white" : solid ? "text-ink-soft hover:bg-sea/10 hover:text-sea-deep" : "text-bone/80 hover:bg-white/10 hover:text-white"}`}>{item.label}</Link>)}
+
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-3 py-2 text-[0.95rem] transition ${
+                  isActive(item.href) ? "text-white" : "text-bone/80 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
+
           <div className="flex items-center gap-2">
-            <Link href="/book" className="hidden rounded-full bg-clay px-4 py-2 text-sm font-medium text-white shadow-lg shadow-clay/25 sm:inline-flex">Book a visit</Link>
-            <button type="button" className={`inline-flex h-10 w-10 items-center justify-center rounded-full lg:hidden ${solid ? "text-ink" : "text-bone"}`} aria-expanded={open} aria-label="Menu" onClick={() => setMenuFor((p) => (p === pathname ? null : pathname))}>
-              <span className="sr-only">Menu</span>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">{open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h10" />}</svg>
+            <Link
+              href="/book"
+              className="hero-book hidden justify-center px-5 py-2.5 text-sm shadow-[0_10px_24px_rgba(210,101,46,0.34)] lg:inline-flex"
+            >
+              Book a visit
+            </Link>
+            <button
+              type="button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/25 bg-white/5 text-bone backdrop-blur-md lg:hidden"
+              aria-expanded={open}
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
+                {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M5 8h14M5 12h14M5 16h10" />}
+              </svg>
             </button>
           </div>
         </div>
-        {open && <div className="mt-2 rounded-2xl border border-white/60 bg-[rgba(251,248,242,0.96)] p-3 shadow-xl backdrop-blur-xl lg:hidden">
-          {nav.map((item) => <Link key={item.href} href={item.href} className={`block rounded-xl px-3 py-3 text-base ${isActive(item.href) ? "bg-foam text-sea-deep" : "text-ink"}`}>{item.label}</Link>)}
-          <Link href="/book" className="mt-2 flex items-center justify-center rounded-xl bg-clay px-3 py-3 font-medium text-white">Book a visit</Link>
-        </div>}
+
+        {open && (
+          <div className="hero-glass mt-2 rounded-2xl p-2 lg:hidden">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`block rounded-xl px-3 py-3 text-base ${
+                  isActive(item.href) ? "bg-white/10 text-white" : "text-bone"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link href="/book" className="hero-book mt-1 flex w-full justify-center rounded-xl py-3">
+              Book a visit
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );

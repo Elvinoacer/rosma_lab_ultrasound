@@ -19,7 +19,7 @@ export default function FaqPage() {
         image="/images/hero.jpg"
         imageAlt="A clinician ready to talk through a visit"
       />
-      <section className="px-4 py-20 sm:px-6 sm:py-24">
+      <section className="px-2.5 py-16 sm:px-4 sm:py-24 lg:px-5">
         <div className="mx-auto max-w-3xl">
           <FaqAccordion />
         </div>

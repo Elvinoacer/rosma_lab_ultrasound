@@ -22,7 +22,7 @@ export default function LaboratoryPage() {
         imageAlt="Clinical laboratory analyzers"
       />
 
-      <section className="px-4 py-20 sm:px-6 sm:py-24">
+      <section className="px-2.5 py-16 sm:px-4 sm:py-24 lg:px-5">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             kicker="The bench"
@@ -31,15 +31,12 @@ export default function LaboratoryPage() {
           />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {labPanels.map((panel) => (
-              <article
-                key={panel.title}
-                className="rounded-[1.4rem] border border-ink/8 bg-white p-7"
-              >
-                <h2 className="display text-2xl text-ink">{panel.title}</h2>
+              <article key={panel.title} className="hero-glass rounded-[1.45rem] p-7">
+                <h2 className="display text-2xl text-bone">{panel.title}</h2>
                 <ul className="mt-4 space-y-2">
                   {panel.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm text-ink-soft">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-clay" />
+                    <li key={item} className="flex gap-2 text-sm text-bone/70">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d2652e]" />
                       {item}
                     </li>
                   ))}
@@ -50,8 +47,8 @@ export default function LaboratoryPage() {
         </div>
       </section>
 
-      <section className="px-4 pb-16 sm:px-6">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[2rem] bg-sea-deep lg:grid-cols-2">
+      <section className="px-2.5 pb-16 sm:px-4 lg:px-5">
+        <div className="hero-frame mx-auto grid max-w-6xl items-center overflow-hidden rounded-[1.8rem] lg:grid-cols-2">
           <div className="relative min-h-[18rem]">
             <Image
               src="/images/ultrasound.jpg"
@@ -61,7 +58,7 @@ export default function LaboratoryPage() {
               sizes="(min-width:1024px) 50vw, 100vw"
             />
           </div>
-          <div className="px-8 py-12 text-bone sm:px-12">
+          <div className="hero-glass rounded-none px-8 py-12 text-bone sm:px-12">
             <p className="text-xs uppercase tracking-[0.2em] text-sand">Turnaround</p>
             <h2 className="display mt-3 text-3xl">Most routine results before evening.</h2>
             <p className="mt-4 text-bone/70">

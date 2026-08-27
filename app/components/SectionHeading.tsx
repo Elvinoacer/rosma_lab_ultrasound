@@ -2,7 +2,7 @@ export default function SectionHeading({
   kicker,
   title,
   lede,
-  light = false,
+  light = true,
 }: {
   kicker?: string;
   title: string;

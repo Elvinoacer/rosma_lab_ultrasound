@@ -7,7 +7,7 @@ export default function FaqAccordion({ items = faqs }: { items?: readonly { q: s
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-ink/8 rounded-[1.4rem] border border-ink/8 bg-white">
+    <div className="hero-glass divide-y divide-white/10 rounded-[1.45rem]">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
@@ -18,17 +18,17 @@ export default function FaqAccordion({ items = faqs }: { items?: readonly { q: s
               aria-expanded={isOpen}
               onClick={() => setOpen(isOpen ? null : i)}
             >
-              <span className="text-base font-medium text-ink">{item.q}</span>
+              <span className="text-base font-medium text-bone">{item.q}</span>
               <span
-                className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ink/10 text-sea transition ${
-                  isOpen ? "rotate-45 bg-foam" : ""
+                className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-sand transition ${
+                  isOpen ? "rotate-45 bg-white/10" : ""
                 }`}
               >
                 +
               </span>
             </button>
             {isOpen && (
-              <p className="px-5 pb-5 text-sm leading-relaxed text-ink-soft sm:px-6">{item.a}</p>
+              <p className="px-5 pb-5 text-sm leading-relaxed text-bone/70 sm:px-6">{item.a}</p>
             )}
           </div>
         );
