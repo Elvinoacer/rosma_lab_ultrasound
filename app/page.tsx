@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CtaBanner from "./components/CtaBanner";
 import FaqAccordion from "./components/FaqAccordion";
+import HomeHero from "./components/HomeHero";
 import SectionHeading from "./components/SectionHeading";
 import { faqs, journey, scans, site } from "./lib/site";
 
@@ -11,53 +12,10 @@ const quickStart = [
   { href: "/prepare", label: "I'm coming today", body: "Check fasting, water and other preparation in one place.", action: "Prepare" },
 ] as const;
 
-const practical = [
-  ["Walk-ins", "Welcome for most services"],
-  ["Hours", site.hoursShort],
-  ["Payment", "Cash or M-Pesa"],
-  ["Languages", "English · Kiswahili"],
-] as const;
-
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#0c1c22]" aria-labelledby="hero-title">
-        <h1 id="hero-title" className="sr-only">Diagnostics without the maze.</h1>
-        <div className="relative aspect-[864/1821] w-full md:aspect-[1536/1024]">
-          <Image
-            src="/hero_design/hero_mobile_bg.webp"
-            alt=""
-            fill
-            priority
-            className="object-cover md:hidden"
-            sizes="100vw"
-          />
-          <Image
-            src="/hero_design/hero_mobile.webp"
-            alt="Rosma Laboratory hero design"
-            fill
-            priority
-            className="object-cover md:hidden"
-            sizes="100vw"
-          />
-          <Image
-            src="/hero_design/hero_pc_bg.webp"
-            alt=""
-            fill
-            priority
-            className="hidden object-cover md:block"
-            sizes="100vw"
-          />
-          <Image
-            src="/hero_design/hero_pc.webp"
-            alt="Rosma Laboratory hero design"
-            fill
-            priority
-            className="hidden object-cover md:block"
-            sizes="100vw"
-          />
-        </div>
-      </section>
+      <HomeHero />
 
       <section className="border-b border-ink/8 bg-white px-4 py-10 sm:px-6 sm:py-12">
         <div className="mx-auto max-w-6xl">
