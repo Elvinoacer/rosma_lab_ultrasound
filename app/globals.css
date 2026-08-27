@@ -57,19 +57,3 @@ body { background: var(--paper); color: var(--ink); font-family: var(--font-sans
 @keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 input, select, textarea { font-family: inherit; }
 input:focus, select:focus, textarea:focus { outline: 2px solid rgba(196,98,58,.45); outline-offset: 2px; }
-
-/* Pixel-faithful hero composition: the supplied hero assets are complete design layers. */
-main > section:first-child { position: relative; overflow: hidden; background: #0c1c22; }
-main > section:first-child > div.relative.mx-auto.grid { position: absolute; inset: 0; z-index: 2; display: block; max-width: none; min-height: 0; padding: 0; }
-main > section:first-child > div.relative.mx-auto.grid > div:first-child { display: none; }
-main > section:first-child > div.relative.mx-auto.grid > div:last-child { position: absolute; inset: 0; z-index: 3; min-height: 0; }
-main > section:first-child > div.relative.mx-auto.grid > div:last-child > img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; object-position: center !important; }
-main > section:first-child > div.pointer-events-none { display: none; }
-
-@media (min-width: 768px) {
-  main > section:first-child { min-height: calc(100svh - 72px); height: calc(100svh - 72px); margin: 36px 35px 0; border: 1px solid rgba(255,255,255,.34); border-radius: 32px; box-shadow: 0 22px 70px rgba(5,17,20,.18); }
-}
-
-@media (max-width: 767px) {
-  main > section:first-child { min-height: calc(100svh - 72px); height: calc(100svh - 72px); margin: 36px 58px 0; border: 1px solid rgba(255,255,255,.34); border-radius: 32px; box-shadow: 0 22px 70px rgba(5,17,20,.2); }
-}
