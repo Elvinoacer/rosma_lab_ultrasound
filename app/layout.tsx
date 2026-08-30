@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
-  metadataBase: new URL("https://rosmalab.co.ke"),
+  metadataBase: new URL("https://rosma-lab-ultrasound.vercel.app"),
   openGraph: {
     title: `${site.name} · Ultrasound & Diagnostics, Kasarani`,
     description: site.description,
@@ -34,7 +34,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${sans.variable} ${display.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col mesh">
         <JsonLd />
         <Navbar />
