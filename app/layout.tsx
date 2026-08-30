@@ -23,12 +23,26 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
-  metadataBase: new URL("https://rosma-lab-ultrasound.vercel.app"),
+  metadataBase: new URL("https://rosmalab.co.ke"),
   openGraph: {
     title: `${site.name} · Ultrasound & Diagnostics, Kasarani`,
     description: site.description,
     locale: "en_KE",
     type: "website",
+    images: [
+      {
+        url: "/images/previewimage.webp",
+        width: 1200,
+        height: 630,
+        alt: "Rosma Laboratory — Ultrasound & Diagnostics, Kasarani",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} · Ultrasound & Diagnostics, Kasarani`,
+    description: site.description,
+    images: ["/images/previewimage.webp"],
   },
 };
 
