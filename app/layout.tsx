@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
-  metadataBase: new URL("https://rosmalab.co.ke"),
+  metadataBase: new URL("https://rosma-lab-ultrasound.vercel.app"),
   openGraph: {
     title: `${site.name} · Ultrasound & Diagnostics, Kasarani`,
     description: site.description,
