@@ -3,6 +3,7 @@ import { Fraunces, Outfit } from "next/font/google";
 import Footer from "./components/Footer";
 import JsonLd from "./components/JsonLd";
 import Navbar from "./components/Navbar";
+import Chatbot from "./components/Chatbot";
 import { site } from "./lib/site";
 import "./globals.css";
 
@@ -33,15 +34,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${sans.variable} ${display.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${sans.variable} ${display.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col mesh">
         <JsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );
